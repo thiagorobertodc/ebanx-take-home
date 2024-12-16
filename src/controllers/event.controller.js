@@ -26,7 +26,7 @@ const handleAccountOps = catchAsync(async (req, res) => {
         return res.status(201).send(`{ "origin": ${JSON.stringify(account)} }`);
 
       case "transfer":
-        const accounts = await eventService.transfer(
+        const transferAccounts = await eventService.transfer(
           origin,
           amount,
           destination
@@ -35,8 +35,10 @@ const handleAccountOps = catchAsync(async (req, res) => {
           .status(201)
           .send(
             `{ "origin": ${JSON.stringify(
-              accounts.origin
-            )}, "destination": ${JSON.stringify(account.destination)} }`
+              transferAccounts.origin
+            )}, "destination": ${JSON.stringify(
+              transferAccounts.destination
+            )} }`
           );
 
       default:
