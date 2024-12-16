@@ -1,15 +1,20 @@
 const accounts = require("../models/accounts");
+
 /**
  * Get balance by account id
- * @param {number} accountId
- * @returns {number} balance value
+ * @param {string} accountId
+ * @returns {number} Account balance
  */
 const getBalanceByAccountId = async (accountId) => {
-  if (!accounts[accountId]) {
+  console.log("Accounts:", accounts);
+
+  const account = accounts.find((acc) => acc.id == accountId);
+
+  if (!account) {
     throw new Error("Account not found");
   }
 
-  return accounts[accountId];
+  return account.balance;
 };
 
 module.exports = { getBalanceByAccountId };
