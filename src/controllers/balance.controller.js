@@ -6,7 +6,6 @@ const getBalance = catchAsync(async (req, res) => {
   if (!accountId) {
     return res.status(400).send("missing account id");
   }
-  console.log(accountId);
   try {
     const balance = await balanceService.getBalanceByAccountId(account_id);
     return res.status(200).send(`${balance}`);

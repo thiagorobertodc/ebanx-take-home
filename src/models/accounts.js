@@ -1,4 +1,4 @@
 // store.js
-const accounts = {};
+const accounts = [];
 
 module.exports = accounts;
