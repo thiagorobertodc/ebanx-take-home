@@ -7,6 +7,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var balanceRouter = require("./routes/balance.route");
 var eventRouter = require("./routes/event.route");
+var resetRouter = require("./routes/reset.route");
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/balance", balanceRouter);
 app.use("/event", eventRouter);
+app.use("/reset", resetRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

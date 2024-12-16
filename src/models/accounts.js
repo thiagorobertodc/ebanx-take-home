@@ -1,4 +1,3 @@
-// store.js
-const accounts = [];
+let accounts = [];
 
 module.exports = accounts;
