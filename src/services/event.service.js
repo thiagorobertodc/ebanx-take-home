@@ -20,7 +20,7 @@ const createOrDepositAccount = async (destination, amount) => {
   return accounts[accountIndex];
 };
 
-const withdrawnFromAccount = async (origin, amount) => {
+const withdrawFromAccount = async (origin, amount) => {
   const accountIndex = accounts.findIndex((account) => account.id === origin);
 
   if (accountIndex === -1) {
@@ -31,4 +31,23 @@ const withdrawnFromAccount = async (origin, amount) => {
   return accounts[accountIndex];
 };
 
-module.exports = { createOrDepositAccount, withdrawnFromAccount };
+const transfer = async (origin, amount, destination) => {
+  const originIndex = accounts.findIndex((account) => account.id === origin);
+  const destinationIndex = accounts.findIndex(
+    (account) => account.id === destination
+  );
+
+  if (originIndex === -1 || destinationIndex === -1) {
+    throw new Error("Couldnt find one of the accounts");
+  }
+
+  accounts[originIndex].balance -= amount;
+  accounts[destinationIndex].balance += amount;
+
+  return {
+    origin: accounts[originIndex],
+    destination: accounts[destinationIndex],
+  };
+};
+
+module.exports = { createOrDepositAccount, withdrawFromAccount, transfer };
