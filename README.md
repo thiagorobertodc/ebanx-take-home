@@ -23,7 +23,7 @@
   <ol>
     <li>Clone the repository:
       <pre><code>git clone https://github.com/thiagorobertodc/ebanx-take-home
-cd your-repo-name</code></pre>
+cd ebanx-take-home</code></pre>
     </li>
     <li>Install dependencies:
       <pre><code>npm install</code></pre>
