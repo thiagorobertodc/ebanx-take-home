@@ -11,8 +11,10 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "http-status": "^1.4.0",
     "jade": "~1.11.0",
+    "jest": "^29.7.0",
     "morgan": "~1.9.1",
-    "http-status": "^1.4.0"
+    "supertest": "^7.0.0"
   }
 }
