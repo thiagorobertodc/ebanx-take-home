@@ -10,27 +10,40 @@ const handleAccountOps = catchAsync(async (req, res) => {
 
   let account;
 
-  switch (type) {
-    case "deposit":
-      account = await eventService.createOrDepositAccount(destination, amount);
-      return res
-        .status(201)
-        .send(`{ "destination": ${JSON.stringify(account)} }`);
+  try {
+    switch (type) {
+      case "deposit":
+        account = await eventService.createOrDepositAccount(
+          destination,
+          amount
+        );
+        return res
+          .status(201)
+          .send(`{ "destination": ${JSON.stringify(account)} }`);
 
-    case "withdrawn":
-      account = await eventService.withdrawnFromAccount(origin, amount);
-      return res
-        .status(201)
-        .send(`{ "destination": ${JSON.stringify(account)} }`);
+      case "withdraw":
+        account = await eventService.withdrawFromAccount(origin, amount);
+        return res.status(201).send(`{ "origin": ${JSON.stringify(account)} }`);
 
-    case "withdrawn":
-      account = await eventService.withdrawnFromAccount(origin, amount);
-      return res
-        .status(201)
-        .send(`{ "destination": ${JSON.stringify(account)} }`);
+      case "transfer":
+        const accounts = await eventService.transfer(
+          origin,
+          amount,
+          destination
+        );
+        return res
+          .status(201)
+          .send(
+            `{ "origin": ${JSON.stringify(
+              accounts.origin
+            )}, "destination": ${JSON.stringify(account.destination)} }`
+          );
 
-    default:
-      return res.status(400).send("Bad request - Invalid operation type");
+      default:
+        return res.status(400).send("Bad request - Invalid operation type");
+    }
+  } catch {
+    return res.status(404).send("0");
   }
 });
 
