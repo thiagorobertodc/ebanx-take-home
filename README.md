@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account Management API</title>
-</head>
 <body>
   <h1>Account Management API</h1>
   <p>A RESTful API for managing accounts with features like deposits, withdrawals, transfers, and balance inquiries.</p>
